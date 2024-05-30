@@ -20,19 +20,40 @@ class CartController extends Controller
         return view("cart");
     }
 
-    public function addTOCart(Request $request){
-        $itemId=$request->input('item_id');
-        $item=item::find($itemId);
+    public function addTOCart(Request $request)
+{
+    $itemId = $request->input('item_id');
+    $quantity = $request->input('quantity', 1);
+    $item = Item::find($itemId);
 
-        $cart = session()->get('cart', []);
+    if (!$item) {
+        return response()->json(['message' => 'Item not found'], 404);
+    }
+
+    $cart = session()->get('cart', []);
+
+    if (isset($cart[$itemId])) {
+        // Ensure the 'quantity' key exists before incrementing
+        $cart[$itemId]['quantity'] = isset($cart[$itemId]['quantity']) ? $cart[$itemId]['quantity'] : 0;
+        $cart[$itemId]['quantity'] += $quantity;
+    } else {
+        // Add new item to the cart
         $cart[$itemId] = [
             'title' => $item->title,
             'price' => $item->price,
+            'quantity' => $quantity,
         ];
-        session()->put('cart', $cart);
-
-        return redirect()->route('view')->with('success', 'Product added to cart successfully!');
-
     }
-    
+
+    session()->put('cart', $cart);
+
+    // Calculate the total quantity
+    $totalQuantity = 0;
+    foreach ($cart as $item) {
+        $itemQuantity = isset($item['quantity']) ? $item['quantity'] : 0;
+        $totalQuantity += $itemQuantity;
+    }
+
+    return redirect()->route('view')->with('success', 'Product added to cart successfully!');
+}
 }

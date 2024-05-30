@@ -1,36 +1,10 @@
 @extends('layouts.app')
 
+
 @section('content')
+
 <div class="container">
-    <!-- Image slider begin -->
-    {{-- <div id="carouselExampleCaptions" class="carousel slide mb-5" data-ride="carousel" style="height: 550px;">
-        <ol class="carousel-indicators">
-            @foreach ($items as $key => $item)
-                <li data-target="#carouselExampleCaptions" data-slide-to="{{ $key }}" class="{{ $key == 0 ? 'active' : '' }}"></li>
-            @endforeach
-        </ol>
-        <div class="carousel-inner">
-            @foreach ($items as $key => $item)
-                <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
-                    @php
-                        $scrolls = json_decode($item->image);
-                    @endphp
-                    @foreach($scrolls as $scroll)
-                        <img src="{{ asset('storage/user/' . $scroll) }}" style="height: 400px; width: 400px;"/>
-                    @endforeach
-                </div>
-            @endforeach
-        </div>
-        <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-        </a>
-    </div> --}}
-    <!-- Image slider end -->
+    
     <br>
     
     <div class="row">
