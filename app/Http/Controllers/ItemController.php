@@ -12,7 +12,7 @@ class ItemController extends Controller
 
     public function viewitems(){
         
-        $items =  item::with('category')->paginate(3);
+        $items =  item::with('category')->get();
         $categories =  category::with('items')->get();
 
 

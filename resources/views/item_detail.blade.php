@@ -23,13 +23,14 @@
                 <p class="card-text"><small class="text-muted">Updated {{ $item->updated_at->diffForHumans() }}</small></p>
                 @if(auth::check())
 
-                <a href="{{route ("cart")}}" class="btn btn-dark">ADD TO CART</a>
-                {{-- <form method="post">
+                
+               
+                <form method="post">
                     @csrf
-                    
-                    <input type="hidden" name="flat-id" id="flat-id" value="{{$item->id}}"/>
-                    <input type="submit" value="Book now" class="btn btn-dark"/>
-                </form> --}}
+                <input type="hidden" class="product-quantity" value="{{ $item->id }}" name="item_id" id="item_id">
+                <input type="submit" value="Add To Cart" class="btn btn-dark"/>
+                  
+                </form>
                @else
                   <a href="{{route ("login")}}" class="btn btn-dark">ADD TO CART</a>
                 @endif  

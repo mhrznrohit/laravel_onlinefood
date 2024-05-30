@@ -23,8 +23,11 @@ Auth::routes();
 Route::get('/', [App\Http\Controllers\ItemController::class, 'viewitems'])->name('view');
 Route::get('/search', [App\Http\Controllers\ItemController::class, 'search'])->name('items.search');
 Route::get('/items/{slug}', [App\Http\Controllers\ItemController::class, 'showitem'])->name('items.show');
+Route::post('/', [App\Http\Controllers\CartController::class, 'addToCart']);
 
 Route::get('/cart', [App\Http\Controllers\CartController::class, 'cart'])->name('cart');
+Route::post('/items/{slug} ', [App\Http\Controllers\CartController::class, 'addToCart'])->name("cart.add");
+
 
 Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('admin')->middleware(['auth', 'admin.email']);
 Route::get('/admin', [App\Http\Controllers\AdminController::class, 'record'])->name('admin')->middleware(['auth', 'admin.email']);
