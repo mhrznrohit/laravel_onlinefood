@@ -39,16 +39,21 @@
 
                 <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav ms-auto">
+                    
                     @auth
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/') }}">Welcome {{ Auth::user()->name }}</a>
+                        <a class="nav-link">Welcome {{ Auth::user()->name }}</a>
+                    </li>
+                    
+                    @endauth
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('/cart') }}"><i class="bi bi-cart"></i> My Cart</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url('/') }}">Home</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/cart') }}"><i class="bi bi-cart"></i> My Cart</a>
-                    </li>
+                 
+                    @auth
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('logout') }}"
                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
@@ -59,6 +64,7 @@
                         </form>
                     </li>
                     @else
+                   
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                     </li>

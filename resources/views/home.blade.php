@@ -25,12 +25,12 @@
                         <h5 class="card-title">{{ $item->title }}</h5>
                         <h4 class="card-title">{{ $item->category->title }}</h4>
                         <p class="card-text">{{ Str::limit($item->description, 10) }}</p>
-                        @auth
+                        {{-- @auth --}}
                         <form method="post">
                             @csrf
                         <input type="hidden" class="product-quantity" value="{{ $item->id }}" name="item_id" id="item_id">
                         <input type="submit" value="Add To Cart" class="btn btn-dark"/>
-                        @endauth
+                        {{-- @endauth --}}
                         <a href="{{ route('items.show', ['slug' => $item->slug]) }}" class="btn btn-dark  float-right" style="padding:10px;">View More</a>
                         </form>
                        

@@ -21,7 +21,7 @@
                 <p><b>Price:</b> {{ $item->price }}</p>
                 
                 <p class="card-text"><small class="text-muted">Updated {{ $item->updated_at->diffForHumans() }}</small></p>
-                @if(auth::check())
+                {{-- @if(Auth::check()) --}}
 
                 
                
@@ -31,9 +31,9 @@
                 <input type="submit" value="Add To Cart" class="btn btn-dark"/>
                   
                 </form>
-               @else
+               {{-- @else
                   <a href="{{route ("login")}}" class="btn btn-dark">ADD TO CART</a>
-                @endif  
+                @endif   --}}
             </div><!-- / project-info-box -->
           
             @endif

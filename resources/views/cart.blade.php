@@ -59,7 +59,14 @@
                 <td class="text-center"><strong>Total Price: ${{ $totalPrice }}</strong></td>
                 <td class="text-right">
                     <a href="{{ url('/') }}" class="btn btn-primary"><i class="fa fa-angle-left"></i> Continue Shopping</a>
-                    <button class="btn btn-danger">Checkout</button>
+                    @if(Auth::check())
+                    <a href="{{route('checkout.index')}}"> <button class="btn btn-danger">Checkout</button></a>
+
+                    @else
+
+                    <a href="{{route('login')}}"> <button class="btn btn-danger">Checkout</button></a>
+                    @endif
+
                 </td>
             </tr>
         </tfoot>

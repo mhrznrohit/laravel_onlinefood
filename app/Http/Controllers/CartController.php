@@ -11,10 +11,10 @@ class CartController extends Controller
 {
     //
 
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');
+    // }
 
     public function cart(){
         return view("cart");
@@ -31,10 +31,11 @@ class CartController extends Controller
     }
 
     $cart = session()->get('cart', []);
+  
 
     if (isset($cart[$itemId])) {
         // Ensure the 'quantity' key exists before incrementing
-        $cart[$itemId]['quantity'] = isset($cart[$itemId]['quantity']) ? $cart[$itemId]['quantity'] : 0;
+        $cart[$itemId]['quantity'] = isset($cart[$itemId]['quantity']) ? $cart[$itemId]['quantity'] : 1;
         $cart[$itemId]['quantity'] += $quantity;
     } else {
         // Add new item to the cart

@@ -43,6 +43,8 @@ Route::get('/category/{slug}', [App\Http\Controllers\CategoryController::class, 
 Route::get('/contact', [App\Http\Controllers\ContactController::class, 'index'])->name('contact.form');
 Route::post('/contact', [App\Http\Controllers\ContactController::class, 'contactmail'])->name('contact.mail');
 
+Route::get('/checkout', [App\Http\Controllers\CheckoutController::class,'index'])->name('checkout.index');
+
 
 
 
