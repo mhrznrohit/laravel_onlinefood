@@ -68,4 +68,15 @@ class AdminController extends Controller
 
     }
 
+    public function delete(Request $request, $id){
+        $item = Item::find($id);
+    
+        // Validate that the item exists
+        if (!$item) {
+            return redirect()->route('admin')->with('error', 'Item not found.');
+        }
+    
+        $item->delete();
+        return redirect()->route('admin')->with('success', 'Item deleted successfully.');
+    }
 }

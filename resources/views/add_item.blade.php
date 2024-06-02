@@ -18,6 +18,18 @@
                         <div class="form-group">
                             <label>Description:</label>
                             <input type="text" name="description">
+                            <textarea name="description"></textarea>
+    <script>
+        // Initialize CKEditor
+        ClassicEditor
+            .create(document.querySelector('textarea'))
+            .then(description => {
+                console.log('Editor was initialized', editor);
+            })
+            .catch(error => {
+                console.error('Error during initialization of the editor', error);
+            });
+    </script>
                         </div>
                         <div class="form-group">
                             <label>Price:</label>

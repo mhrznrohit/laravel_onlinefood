@@ -56,5 +56,17 @@ class CartController extends Controller
     }
 
     return redirect()->route('view')->with('success', 'Product added to cart successfully!');
+
+    
 }
+  public function deleteToCart($id){
+    $cart = session()->get('cart', []);
+    if (isset($cart[$id])) {
+        unset($cart[$id]);
+    }
+    session()->put('cart', $cart);
+
+    return redirect()->route('cart')->with('success', 'Item deleted successfully');
+
+  }
 }

@@ -14,8 +14,10 @@ return new class extends Migration
     public function up()
     {
         Schema::table('items', function (Blueprint $table) {
-            $table->integer('category_id')->after('slug')->nullable(); 
-            $table->foreign('category_id')->references('id')->on('categories'); 
+            if (!Schema::hasColumn('items', 'category_id')) {
+                $table->integer('category_id')->nullable()->after('slug');
+                $table->foreign('category_id')->references('id')->on('categories');
+            }
         });
     }
 
@@ -27,7 +29,10 @@ return new class extends Migration
     public function down()
     {
         Schema::table('items', function (Blueprint $table) {
-            $table->dropColumn('category_id');
+            if (Schema::hasColumn('items', 'category_id')) {
+                $table->dropForeign(['category_id']);
+                $table->dropColumn('category_id');
+            }
         });
     }
 };

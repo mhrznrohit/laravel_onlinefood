@@ -24,7 +24,9 @@
                     <div class="card-body">
                         <h5 class="card-title">{{ $item->title }}</h5>
                         <h4 class="card-title">{{ $item->category->title }}</h4>
-                        <p class="card-text">{{ Str::limit($item->description, 10) }}</p>
+                        <h5 class="card-title">Rs. {{ $item->price }}</h5>
+                       
+                        
                         {{-- @auth --}}
                         <form method="post">
                             @csrf

@@ -27,13 +27,7 @@ Route::post('/', [App\Http\Controllers\CartController::class, 'addToCart']);
 
 Route::get('/cart', [App\Http\Controllers\CartController::class, 'cart'])->name('cart');
 Route::post('/items/{slug} ', [App\Http\Controllers\CartController::class, 'addToCart'])->name("cart.add");
-
-
-Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('admin')->middleware(['auth', 'admin.email']);
-Route::get('/admin', [App\Http\Controllers\AdminController::class, 'record'])->name('admin')->middleware(['auth', 'admin.email']);
-Route::get('/additem', [App\Http\Controllers\AdminController::class, 'items'])->name('additem');
-Route::post('/additem', [App\Http\Controllers\AdminController::class, 'additems'])->name('additem');
-Route::get('/additem', [App\Http\Controllers\AdminController::class, 'category'])->name('category');
+Route::delete("/cart/{id}", [App\Http\Controllers\CartController::class, 'deleteToCart'])->name('cart.delete');
 
 
 
@@ -46,11 +40,22 @@ Route::post('/contact', [App\Http\Controllers\ContactController::class, 'contact
 Route::get('/checkout', [App\Http\Controllers\CheckoutController::class,'index'])->name('checkout.index');
 
 
+Route::middleware(['auth','admin.email'])->group(function(){
+    Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('admin');
+    Route::get('/admin', [App\Http\Controllers\AdminController::class, 'record'])->name('admin');
+    Route::get('/admin/additem', [App\Http\Controllers\AdminController::class, 'items'])->name('additem');
+    Route::post('/admin/additem', [App\Http\Controllers\AdminController::class, 'additems'])->name('additem');
+    Route::get('/admin/additem', [App\Http\Controllers\AdminController::class, 'category'])->name('category');
+    Route::delete('/admin/{id}', [App\Http\Controllers\AdminController::class, 'delete'])->name('item.delete');
+    Route::post('/admin', [App\Http\Controllers\AdminController::class, 'delete'])->name('admin');
+});
 
+Route::middleware(['auth'])->group(function(){
 
-
-
-
+    Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'index'])->name('user.profile');
+    Route::get('/profile/{id}', [App\Http\Controllers\ProfileController::class, 'profile'])->name('profile.view');
+    Route::delete('/profile/{id}', [App\Http\Controllers\ProfileController::class, 'delete'])->name('profile.delete');
+});
 
 
 

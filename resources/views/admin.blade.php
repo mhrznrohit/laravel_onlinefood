@@ -9,6 +9,7 @@
         <th scope="col">Price</th>
         <th scope="col">Cagtegory</th>
         <th scope="col">Created </th>
+        <th scope="col">Action </th>
 
       </tr>
     </thead>
@@ -18,8 +19,22 @@
         <th scope="row">{{ $item->id }}</th>
         <td>{{ $item->title }}</td>
         <td>{{ $item->price }}</td>
-        <td>{{ $item->created_at }}</td>
         <td>{{ $item->category->title }}</td>
+        <td>{{ $item->created_at }}</td>
+        <td>
+          {{-- <form method="delete">
+            
+            @csrf
+        <input type="hidden"  value="{{ $item->id }}" name="item_id" id="item_id">
+        <input type="submit" value="Delete" class="btn btn-danger"/>
+          
+        </form> --}}
+        <form method="POST" action="{{ route('item.delete', ['id' => $item->id]) }}">
+          @csrf
+          @method('DELETE')
+          <button type="submit" class="btn btn-danger">Delete</button>
+      </form>
+        </td>
       </tr>
       @endforeach
     </tbody>

@@ -46,7 +46,11 @@
                         <td data-th="Quantity">{{ $quantity }}</td>
                         <td data-th="Subtotal" class="text-center">${{ $price * $quantity }}</td>
                         <td class="actions">
-                            <a class="btn btn-outline-danger btn-sm delete-item">Delete</a>
+                            <form method="POST" action="{{ route('cart.delete', $id) }}">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger">Delete</button>
+                            </form>
                         </td>
                     </tr>
                 @endforeach
@@ -64,7 +68,7 @@
 
                     @else
 
-                    <a href="{{route('login')}}"> <button class="btn btn-danger">Checkout</button></a>
+                    <a href="{{ url('/login') }}"> <button class="btn btn-danger">Checkout</button></a>
                     @endif
 
                 </td>
