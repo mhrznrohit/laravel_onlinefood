@@ -44,6 +44,15 @@
                             </select>
                         </div>
                         <div class="form-group">
+                            <label>Status:</label>
+                            <select name="status" id="status">
+                                
+                                    <option value=1>Show</option>
+                                    <option value=0 class="value">Hide</option>
+                                
+                            </select>
+                        </div>
+                        <div class="form-group">
                             <label>Image:</label>
                             <input type="file" class="form-control" name="image[]" multiple>
                         </div>

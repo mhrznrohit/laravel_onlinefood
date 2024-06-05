@@ -29,12 +29,19 @@
         <input type="submit" value="Delete" class="btn btn-danger"/>
           
         </form> --}}
+       <a href="{{route('form.update', ['id' => $item->id])}}">
+       
+          <button type="submit" class="btn btn-primary">Edit</button>
+      
+        </a>
         <form method="POST" action="{{ route('item.delete', ['id' => $item->id]) }}">
           @csrf
           @method('DELETE')
           <button type="submit" class="btn btn-danger">Delete</button>
       </form>
+      
         </td>
+        
       </tr>
       @endforeach
     </tbody>

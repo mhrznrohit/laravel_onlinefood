@@ -6,6 +6,8 @@
 <ul>
     @foreach ($results as $result)
         <li>{{ $result->title }}</li>
+
+        <x-product :item="$item"/>
     @endforeach
 </ul>
 

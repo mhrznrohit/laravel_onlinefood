@@ -17,9 +17,9 @@ class AdminEmailMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        $allowedAdminEmail = 'admin@gmail.com';  // Replace with your admin email
+          // Replace with your admin email
 
-        if (Auth::check() && Auth::user()->email === $allowedAdminEmail) {
+        if (Auth::check() && Auth::user()->role === 1) {
             return $next($request);
         }
 

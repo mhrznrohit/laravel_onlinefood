@@ -55,8 +55,9 @@
                         <a class="nav-link" href="{{ url('/') }}">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/cart') }}"><i class="bi bi-cart"></i> My Cart</a>
+                        <a class="nav-link" href="{{ url('/cart') }}"><i class="bi bi-cart"></i> My Cart({{ session()->has('cart') && is_array(session()->get('cart')) ? count(session()->get('cart')) : 0 }})</a>
                     </li>
+                    
                     @auth
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('logout') }}"

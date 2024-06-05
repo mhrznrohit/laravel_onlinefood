@@ -12,7 +12,8 @@ class ItemController extends Controller
 
     public function viewitems(){
         
-        $items =  item::with('category')->get();
+        
+        $items =  item::with('category')->where('status',1)->get();
         $categories =  category::with('items')->get();
 
 

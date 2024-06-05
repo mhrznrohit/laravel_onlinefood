@@ -48,6 +48,10 @@ Route::middleware(['auth','admin.email'])->group(function(){
     Route::get('/admin/additem', [App\Http\Controllers\AdminController::class, 'category'])->name('category');
     Route::delete('/admin/{id}', [App\Http\Controllers\AdminController::class, 'delete'])->name('item.delete');
     Route::post('/admin', [App\Http\Controllers\AdminController::class, 'delete'])->name('admin');
+    Route::get('/admin/edit/{id}', [App\Http\Controllers\AdminController::class, 'updateform'])->name('form.update');
+    Route::put ('/admin/edit/{id}', [App\Http\Controllers\AdminController::class, 'update'])->name('item.update');
+
+    
 });
 
 Route::middleware(['auth'])->group(function(){
