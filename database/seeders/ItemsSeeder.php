@@ -17,7 +17,17 @@ class ItemsSeeder extends Seeder
     public function run()
     {
         //
-        Item::factory(3)->create();
+        item::create([
+            'title'=> 'C Momo',
+            'slug'=>'momo',
+            'category_id'=>'1',
+            'description'=> 'asdfkjflkgs',
+            'status'=> '1',
+            'price'=> '200',
+            'image'=> '123244.jpg',
+
+
+        ]);
 
     }
 }
