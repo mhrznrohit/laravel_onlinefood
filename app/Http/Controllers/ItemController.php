@@ -11,14 +11,14 @@ class ItemController extends Controller
     //
 
     public function viewitems(){
-        
-        
+
+
         $items =  item::with('category')->where('status',1)->get();
         $categories =  category::with('items')->get();
 
 
-        return view('home',compact('items'));
-        
+          return view('home',compact('items'));
+        //return response()->json($items);
 }
 
 public function showitem($slug)
